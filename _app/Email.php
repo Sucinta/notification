@@ -9,22 +9,22 @@ class Email {
     
     private $mail = \stdClass::class;
 
-    public function __construct() {
+    public function __construct($smtpDebug, $host, $user, $pass, $smtpSecure, $port, $setFromMail, $setFromName) {
         
         $this->mail = new PHPMailer(true);
         //$this->mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-        $this->mail->SMTPDebug = 2;                      // Enable verbose debug output
+        $this->mail->SMTPDebug = $smtpDebug;                      // Enable verbose debug output
         $this->mail->isSMTP();                                            // Send using SMTP
-        $this->mail->Host       = 'mail.sucinta.com.br';                    // Set the SMTP server to send through
+        $this->mail->Host       = $host;                    // Set the SMTP server to send through
         $this->mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $this->mail->Username   = 'smtp@sucinta.com.br';                     // SMTP username
-        $this->mail->Password   = 'um4Lw#QDfyiQ';                               // SMTP password
-        $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-        $this->mail->Port       = 587;
+        $this->mail->Username   = $user;                     // SMTP username
+        $this->mail->Password   = $pass;                               // SMTP password  um4Lw#QDfyiQ
+        $this->mail->SMTPSecure = $smtpSecure;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+        $this->mail->Port       = $port;
         $this->mail->CharSet = 'utf-8';
         $this->mail->setLanguage('br');
         $this->mail->isHTML(true);
-        $this->mail->setFrom('smtp@sucinta.com.br', 'Sucinta Treinamento');
+        $this->mail->setFrom($setFromMail, $setFromName);
     }
 
 
