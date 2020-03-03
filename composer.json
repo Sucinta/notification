@@ -1,0 +1,26 @@
+{
+    "name": "sucinta/notification",
+    "description": "Biblioteca que utiliza composer para envio de alertas",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sucinta",
+            "email": "flavio@sucinta.com.br",
+            "homepage": "https://sucinta.com.br",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "phpmailer/phpmailer": "6.1.4"
+    },
+    "config": {
+        "vendor-dir": "lib_ext"
+    },
+    "autoload": {
+        "psr-4": {
+            "Notification\\": "_app"
+        }
+    }
+}
